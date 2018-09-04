@@ -1,0 +1,21 @@
+App\Exceptions\Api\ApiException:
+  exclusion_policy: all
+  access_type: public_method
+  properties:
+      code:
+          expose: true
+          type: integer
+          groups: [api]
+          since_version: 1.0
+          serialized_name: error_code
+      message:
+          expose: true
+          type: string
+          groups: [api]
+          since_version: 1.0
+          serialized_name: error_text
+      errorDetail:
+          type: array
+          groups: [api]
+          since_version: 1.0
+          serialized_name: error_detail

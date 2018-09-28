@@ -14,8 +14,8 @@ return [
     */
 
     'defaults' => [
-        // 'guard' => 'web',
-        // 'passwords' => 'users',
+         'guard' => 'api',
+         'passwords' => 'users',
     ],
 
     /*
@@ -36,15 +36,15 @@ return [
     */
 
     'guards' => [
-        // 'web' => [
-        //     'driver' => 'session',
-        //     'provider' => 'users',
-        // ],
+         'web' => [
+             'driver' => 'session',
+             'provider' => 'users',
+         ],
 
-        // 'api' => [
-        //     'driver' => 'token',
-        //     'provider' => 'users',
-        // ],
+         'api' => [
+             'driver' => 'token',
+             'provider' => 'users',
+         ],
     ],
 
     /*
@@ -65,15 +65,12 @@ return [
     */
 
     'providers' => [
-        // 'users' => [
-        //     'driver' => 'eloquent',
-        //     'model'  => '',
-        // ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+
+         'users' => [
+             'driver' => 'database',
+             'table' => 'users',
+         ],
     ],
 
     /*
@@ -92,11 +89,11 @@ return [
     */
 
     'passwords' => [
-        // 'users' => [
-        //     'provider' => 'users',
-        //     'table' => 'password_resets',
-        //     'expire' => 60,
-        // ],
+         'users' => [
+             'provider' => 'users',
+             'table' => 'password_resets',
+             'expire' => 60,
+         ],
     ],
 
 ];

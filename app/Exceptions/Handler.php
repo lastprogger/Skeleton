@@ -59,10 +59,8 @@ class Handler extends ExceptionHandler
     public function render($request, Exception $exception)
     {
         if ($request->wantsJson()) {
-            Log::error($exception);
-
-            $apiVersion = $request->route()->parameter('version', config('app.api_version'));
-
+//            Log::error($exception);
+            dd($exception);
             $route = Route::current();
             if (null === $route) {
                 return parent::render($request, $exception);

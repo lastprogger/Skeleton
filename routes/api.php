@@ -16,11 +16,12 @@ use App\Http\Controllers\Controller;
 
 Route::group(
     [
-        'prefix'                          => 'api/{version}',
+        'prefix'                          => '{version}',
         'namespace'                       => 'Api',
         'middleware'                      => ['locale'],
         Controller::ACTION_GROUP_NAME_KEY => Controller::ACTION_GROUP_NAME_PUBLIC_API,
     ],
     function () {
+        Route::resource('pbx-scheme', 'PbxSchemeController');
     }
 );

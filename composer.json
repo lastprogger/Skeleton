@@ -6,8 +6,6 @@
     "type": "project",
     "require": {
         "php": "^7.1.3",
-        "belka-car/php-lib-filestorage": "^1.1",
-        "belka-car/php-lib-graylog": "^1.1",
         "fideloper/proxy": "^4.0",
         "gedmo/doctrine-extensions": "^2.4",
         "jms/serializer": "^1.13",
@@ -26,14 +24,7 @@
         "phpunit/phpunit": "^7.0"
     },
     "repositories": [
-        {
-            "type": "git",
-            "url":  "git@github.com:belka-car/php-lib-graylog.git"
-        },
-        {
-            "type": "git",
-            "url":  "git@github.com:belka-car/php-lib-filestorage.git"
-        }
+
     ],
     "autoload": {
         "classmap": [

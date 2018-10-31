@@ -13,11 +13,11 @@ use App\Domain\Entity\PbxScheme\PbxSchemeNode;
 interface IPbxSchemeNodeRepository
 {
     /**
-     * @param int $id
+     * @param string $id
      *
      * @return PbxSchemeNode|null
      */
-    public function findById(int $id): ?PbxSchemeNode;
+    public function findById(string $id): ?PbxSchemeNode;
 
     /**
      * @param PbxSchemeNode $node

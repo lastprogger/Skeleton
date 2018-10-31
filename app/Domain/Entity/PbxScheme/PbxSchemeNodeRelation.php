@@ -6,15 +6,16 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Ramsey\Uuid\Uuid;
 
 
 /**
  * App\Entity\CarBrand
  *
  * @property integer                 $id
- * @property integer                 $from_node_id
- * @property integer                 $to_node_id
- * @property integer                 $pbx_scheme_id
+ * @property string                  $from_node_id
+ * @property string                  $to_node_id
+ * @property string                  $pbx_scheme_id
  * @property string                  $type
  * @property Carbon                  $deleted_at
  * @property Carbon                  $created_at

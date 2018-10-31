@@ -55,6 +55,7 @@ class CreatePbxSchemeService
         $tmpIdMap = [];
 
         $pbxScheme = new PbxScheme();
+        $pbxScheme->user_id = $request->getInitiatorUserId();
         $pbxScheme->save();
 
         foreach ($request->getNodes() as $nodeInputArray) {
@@ -67,6 +68,7 @@ class CreatePbxSchemeService
 
             $pbxSchemeNode                = new PbxSchemeNode();
             $pbxSchemeNode->pbx_scheme_id = $pbxScheme->id;
+            $pbxSchemeNode->node_type_id  = $nodeType->id;
             $pbxSchemeNode->node_type_id  = $nodeType->id;
             $pbxSchemeNode->data          = $nodeInputArray['data'];
             $this->pbxSchemeNodeRepository->save($pbxSchemeNode);

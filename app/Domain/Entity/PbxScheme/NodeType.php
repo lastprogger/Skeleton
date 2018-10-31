@@ -2,21 +2,14 @@
 
 namespace App\Domain\Entity\PbxScheme;
 
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Collection;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Ramsey\Uuid\Uuid;
 
 
 /**
- * App\Entity\CarBrand
- *
- * @property integer $id
+ * @property string  $id
  * @property string  $name
  * @property string  $type
  * @property boolean $deleted
@@ -26,6 +19,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class NodeType extends Model
 {
     use SoftDeletes;
+
+    public $incrementing = false;
 
     public const NAME_CALL              = 'call';
     public const NAME_GROUP_CALL        = 'group_call';
@@ -38,8 +33,18 @@ class NodeType extends Model
     public const TYPE_CONDITION = 'condition';
     public const TYPE_BASIC     = 'basic';
 
-    protected $table = 'node_types';
-    public $timestamps = false;
+    protected $table      = 'node_types';
+    public    $timestamps = false;
 
     protected $dates = ['created_at', 'deleted_at'];
+
+    protected static function boot()
+    {
+        parent::boot();
+        static::creating(
+            function ($model) {
+                $model->id = Uuid::uuid4()->toString();
+            }
+        );
+    }
 }

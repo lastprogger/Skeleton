@@ -18,6 +18,7 @@ class CreateTablePbx extends Migration
             $table->increments('id');
             $table->uuid('pbx_scheme_id');
             $table->uuid('user_id');
+            $table->string('name', 225)->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

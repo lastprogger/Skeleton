@@ -14,9 +14,9 @@ use App\Domain\Entity\PbxScheme\NodeType;
 interface INodeTypeRepository
 {
     /**
-     * @param int $id
+     * @param string $id
      *
      * @return NodeType|null
      */
-    public function findById(int $id): ?NodeType;
+    public function findById(string $id): ?NodeType;
 }

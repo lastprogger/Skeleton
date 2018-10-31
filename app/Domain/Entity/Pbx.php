@@ -14,8 +14,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * App\Entity\CarBrand
  *
  * @property integer        $id
- * @property integer        $pbx_scheme_id
- * @property integer        $user_id
+ * @property string         $pbx_scheme_id
+ * @property string         $user_id
+ * @property string         $name
  * @property Carbon         $deleted_at
  * @property Carbon         $created_at
  * @property Carbon         $updated_at

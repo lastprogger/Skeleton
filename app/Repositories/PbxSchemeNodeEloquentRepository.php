@@ -17,7 +17,7 @@ class PbxSchemeNodeEloquentRepository implements IPbxSchemeNodeRepository
     /**
      * @inheritdoc
      */
-    public function findById(int $id): ?PbxSchemeNode
+    public function findById(string $id): ?PbxSchemeNode
     {
         return PbxSchemeNode::find($id);
     }

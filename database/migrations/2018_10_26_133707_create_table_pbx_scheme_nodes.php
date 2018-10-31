@@ -17,7 +17,7 @@ class CreateTablePbxSchemeNodes extends Migration
 
             $table->uuid('id');
             $table->uuid('pbx_scheme_id');
-            $table->integer('node_type_id');
+            $table->uuid('node_type_id');
             $table->json('data');
             $table->timestamps();
             $table->softDeletes();

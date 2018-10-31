@@ -6,13 +6,14 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Ramsey\Uuid\Uuid;
 
 
 /**
  * App\Entity\CarBrand
  *
- * @property integer $id
- * @property string $userId
+ * @property string $id
+ * @property string $user_id
  * @property Carbon $deleted_at
  * @property Carbon $created_at
  * @property Carbon $updated_at
@@ -20,6 +21,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class PbxScheme extends Model
 {
     use SoftDeletes;
+
+    public $incrementing = false;
 
     protected $table = 'pbx_scheme';
 
@@ -31,5 +34,12 @@ class PbxScheme extends Model
     public function nodes()
     {
         return $this->hasMany(PbxSchemeNode::class, 'pbx_scheme_id');
+    }
+    protected static function boot()
+    {
+        parent::boot();
+        static::creating(function ($model) {
+            $model->id = Uuid::uuid4()->toString();
+        });
     }
 }

@@ -17,7 +17,7 @@ class NodeTypeEloquentRepository implements INodeTypeRepository
     /**
      * @inheritdoc
      */
-    public function findById(int $id): ?NodeType
+    public function findById(string $id): ?NodeType
     {
         return NodeType::find($id);
     }

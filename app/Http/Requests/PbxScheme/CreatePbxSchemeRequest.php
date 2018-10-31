@@ -22,7 +22,7 @@ class CreatePbxSchemeRequest extends AbstractApiRequest
             'pbx_id'                => 'int',
             'nodes'                 => 'required|array',
             'nodes.*.tmp_id'        => 'required|string',
-            'nodes.*.node_type_id'  => 'required|int',
+            'nodes.*.node_type_id'  => 'required|string',
             'nodes.*.data'          => 'required|array',
             'relations'             => 'required|array',
             'relations.*.type'      => 'required|string',

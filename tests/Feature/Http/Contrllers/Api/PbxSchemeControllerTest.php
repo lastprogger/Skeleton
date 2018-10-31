@@ -11,11 +11,13 @@ namespace Tests\Feature\Http\Contrllers\Api;
 use App\Http\Requests\AbstractApiRequest;
 use App\Domain\Entity\PbxScheme\NodeType;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class PbxSchemeControllerTest extends TestCase
 {
     use DatabaseTransactions;
+    use WithFaker;
 
     public function setUp()
     {
@@ -24,16 +26,14 @@ class PbxSchemeControllerTest extends TestCase
 
     public function testCreatePbxScheme()
     {
-        $nodeType1 = new NodeType();
-        $nodeType1->type = 'node';
-        $nodeType1->name = 'announce';
-        $nodeType1->deleted = false;
+        $nodeType1       = new NodeType();
+        $nodeType1->type = NodeType::TYPE_BASIC;
+        $nodeType1->name = NodeType::NAME_VOICE_ANNOUNCE;
         $nodeType1->save();
 
-        $nodeType2 = new NodeType();
-        $nodeType2->type = 'condition';
-        $nodeType2->name = 'ring_duration';
-        $nodeType2->deleted = false;
+        $nodeType2       = new NodeType();
+        $nodeType2->type = NodeType::TYPE_CONDITION;
+        $nodeType2->name = NodeType::NAME_GROUP_CALL;
         $nodeType2->save();
 
         $response = $this->json(
@@ -63,15 +63,20 @@ class PbxSchemeControllerTest extends TestCase
                         'type'      => 'positive',
                         'from_node' => 'd87jdo90s',
                         'to_node'   => 'd87j923hdk',
-                    ]
+                    ],
                 ],
             ],
             [
-                AbstractApiRequest::CUSTOM_HEADER_REQUEST_INITIATOR_USER_ID => 1,
+                AbstractApiRequest::CUSTOM_HEADER_USER_ID => $this->faker->uuid,
             ]
         );
 
-        dd($response);
+        $response->assertOk();
+        $response->assertJsonStructure(
+            [
+                'id',
+            ]
+        );
     }
 
     public function tearDown()

@@ -31,6 +31,7 @@ class PbxSchemeController extends Controller
 
             $pbx = new Pbx();
             $pbx->pbx_scheme_id = $pbxScheme->id;
+            $pbx->user_id = $request->getInitiatorUserId();
             $pbx->save();
 
             return response()->json(

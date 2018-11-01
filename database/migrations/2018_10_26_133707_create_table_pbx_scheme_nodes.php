@@ -15,7 +15,7 @@ class CreateTablePbxSchemeNodes extends Migration
     {
         Schema::create('pbx_scheme_nodes', function (Blueprint $table) {
 
-            $table->uuid('id');
+            $table->uuid('id')->primary();
             $table->uuid('pbx_scheme_id');
             $table->uuid('node_type_id');
             $table->json('data');

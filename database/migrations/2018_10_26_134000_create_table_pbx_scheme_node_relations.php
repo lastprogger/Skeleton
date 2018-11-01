@@ -15,7 +15,7 @@ class CreateTablePbxSchemeNodeRelations extends Migration
     {
         Schema::create('pbx_scheme_node_relations', function (Blueprint $table) {
 
-            $table->increments('id')->primary();
+            $table->increments('id');
             $table->string('type', 255);
             $table->uuid('from_node_id');
             $table->uuid('to_node_id');
